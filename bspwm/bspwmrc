@@ -7,8 +7,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
-CURRENT_BORDER='2.5'
-CURRENT_GAP='19'
+CURRENT_BORDER='1.5'
+CURRENT_GAP='10'
 CURRENT_SRATIO='1.4'
 
 #bspc config border_width         2
