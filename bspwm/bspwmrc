@@ -45,7 +45,7 @@ bspc config focus_follows_pointer true
 feh --bg-fill ~/Wallpapers/Wallpaper.webp
 
 # POLYBAR
-polybar -c ~/.config/polybar/config.ini &
+~/.config/polybar/launch.ini
 
 # CUSTOM
 bspc config focus_follows_pointer true
