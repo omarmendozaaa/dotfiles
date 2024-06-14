@@ -26,9 +26,6 @@ cp -v $ruta/.p10k.zsh ~/.p10k.zsh
 cp -rv $ruta/bin/* ~/.local/bin/
 
 # Copiando Fuentes
-cp -rv $ruta/fonts/* ~/Library/Fonts/
-
-#!/bin/bash
 
 if [ -d "/Library/Fonts" ]; then
     # Si /Library/Fonts existe, copiar a Library Fonts
