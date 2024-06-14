@@ -35,6 +35,12 @@ else
     cp -rv $ruta/fonts/* ~/Biblioteca/Fuentes/
 fi
 
+# Agregando pokemon color scripts
+git clone git@gitlab.com:phoneybadger/pokemon-colorscripts.git
+
+$ruta/pokemon-colorscripts/install.sh
+pokemon-colorscripts -n charizard
+
 source ~/.zshrc
 cd ..
 rm -rf ./dotfiles/
