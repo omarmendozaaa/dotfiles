@@ -14,7 +14,7 @@ rm -r ~/.config/kitty
 cp -rv $ruta/kitty ~/.config/
 
 rm -r ~/.config/zsh
-cp -rv $ruta/zsh ~/.config/zsh
+cp -rv $ruta/zsh ~/.config/
 
 # Copia de configuracion de .p10k.zsh y .zshrc
 rm -rf ~/.zshrc
@@ -44,3 +44,4 @@ pokemon-colorscripts -n charizard
 source ~/.zshrc
 cd ..
 rm -rf ./dotfiles/
+cd ..
