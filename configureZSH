@@ -1,0 +1,43 @@
+#!/bin/bash
+
+if [ "$(whoami)" == "root" ]; then
+    exit 1
+fi
+
+ruta=$(pwd)
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
+
+# Copiando Archivos de Configuración
+
+rm -r ~/.config/kitty
+cp -rv $ruta/kitty ~/.config/
+
+rm -r ~/.config/zsh
+cp -rv $ruta/zsh ~/.config/zsh
+
+# Copia de configuracion de .p10k.zsh y .zshrc
+rm -rf ~/.zshrc
+cp -v $ruta/.zshrc ~/.zshrc
+rm -rf ~/.p10k.zsh
+cp -v $ruta/.p10k.zsh ~/.p10k.zsh
+
+# Copian util scripts
+cp -rv $ruta/bin/* ~/.local/bin/
+
+# Copiando Fuentes
+cp -rv $ruta/fonts/* ~/Library/Fonts/
+
+#!/bin/bash
+
+if [ -d "/Library/Fonts" ]; then
+    # Si /Library/Fonts existe, copiar a Library Fonts
+    cp -rv $ruta/fonts/* ~/Library/Fonts/
+else
+    # Si /Library/Fonts no existe, copiar a /Biblioteca/Fuentes
+    cp -rv $ruta/fonts/* ~/Biblioteca/Fuentes/
+fi
+
+source ~/.zshrc
+cd ..
+rm -rf ./dotfiles/
