@@ -1,0 +1,10 @@
+#!/bin/bash
+
+selected=$(find ~/Gema -mindepth 1 -maxdepth 3 -name .git -type d -prune | sed 's/\/\.git$//' | fzf)
+
+if [[ -z $selected ]]; then
+	exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+cd ~/Gema/$selected_name

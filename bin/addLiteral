@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ $# -ne 3 ]; then
+    echo "Uso: $0 <key> <value> <language>"
+    exit 1
+fi
+
+key="$1"
+value="$2"
+language="$3"
+
+gemaDirectory="$(pwd)"
+directory="$gemaDirectory/app/locales-app"
+base_file="$directory/locales.json"
+language_file="$directory/$language.json"
+
+if [ ! -f "$language_file" ]; then
+    echo "El archivo para el idioma $language no existe."
+    exit 1
+fi
+# Agrega la nueva entrada al archivo de idioma específico
+jq --indent 2 --arg key "$key" --arg value "$value" '.[$key] = $value' "$language_file" > temp && mv temp "$language_file"
+
+# Agrega la nueva entrada a todos los archivos de idioma
+jq --indent 2 --arg key "$key" --arg value "$value" ".\"$language\" += { \"$key\": \"$value\" }" "$base_file" > temp && mv temp "$base_file"
+
+
+echo "La entrada '$key' con valor '$value' fue agregada al archivo '$language_file' y a todos los archivos de idioma."
